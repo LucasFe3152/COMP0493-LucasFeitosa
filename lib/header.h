@@ -4,6 +4,9 @@
 #include <vector>
 using namespace std;
 
-vector<int> counting_sort(vector<int>& input);
-
+template <typename T>
+vector<T> counting_sort(vector<T>& input);
+template <typename T>
+void insertion_sort(vector<T>& input);
+void bucket_sort(float input[], int n);
 #endif

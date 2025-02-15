@@ -1,6 +1,7 @@
 #include "header.h"
 
-int get_max(vector<int>& input) {
+template <typename T>
+int get_max(vector<T>& input) {
     int max = 0;
     for (int i : input) {
         if (i > max)
@@ -9,15 +10,21 @@ int get_max(vector<int>& input) {
     return max;
 }
 
-vector<int> counting_sort(vector<int>& input) {
-    /*
-    1. descobrir o maior termo
-    2. inicializar um countarray de comprimento max+1
-    3. contar cada aparecimento
-    4. armazenar a soma acumulada: countarray[i] = countarray[i-1] + countarray[i]
-    5. iterar pelo final do input array: saida[countingarray[input[i]] - 1] = input[i]
-    e subtrair o countarray: countarray[input[i]]--
-    */
+template <typename T>
+void insertion_sort(vector<T>& input) {
+    for (int i = 1; i < input.size(); ++i) {
+        float key = input[i];
+        int j = i - 1;
+        while (j >= 0 && input[j] > key) {
+            input[j + 1] = input[j];
+            j--;
+        }
+        input[j + 1] = key;
+    }
+}
+
+template <typename T>
+vector<int> counting_sort(vector<T>& input) {
     int max = get_max(input);
     int size_countarray = max+1;
     int size_input = input.size();
@@ -38,4 +45,27 @@ vector<int> counting_sort(vector<int>& input) {
     }
 
     return ordenado;
+}
+
+void bucket_sort(float input[], int n) {
+    vector<float> buckets[n];
+
+    int current_index = 0;
+    int temp;
+
+    for (int i = 0; i < n; i++) {
+        temp = input[i] * n;
+        buckets[temp].push_back(input[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
+        insertion_sort(buckets[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < buckets[i].size(); j++) {
+            input[current_index] = buckets[i][j];
+            current_index++;
+        }
+    }
 }

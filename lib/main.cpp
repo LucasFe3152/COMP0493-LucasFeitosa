@@ -4,14 +4,13 @@ using namespace std;
 
 int main() {
 
-    // Input array
-    vector<int> inputArray = { 4, 3, 12, 1, 5, 5, 3, 9 };
+    float arr[] = {0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    bucket_sort(arr, n);
 
-    // Output array
-    vector<int> outputArray = counting_sort(inputArray);
-
-    for (int i = 0; i < inputArray.size(); i++)
-        cout << outputArray[i] << " ";
-
+    cout << "Sorted array is \n";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
     return 0;
 }
