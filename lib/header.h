@@ -31,4 +31,14 @@ template <typename T>
 int binary_search(vector<T>& input, T key);
 string longest_common_prefix(vector<string>& input);
 
+//geometria computacional
+
+class Point2D;
+class Point3D;
+class Line;
+
+double distance_between_points2D(Point2D p1, Point2D p2);
+double distance_between_points3D(Point3D p1, Point3D p2);
+double distance_to_point(Point2D p, Line l);
+
 #endif
