@@ -2,16 +2,29 @@
 #include "header.h"
 using namespace std;
 
+void variable_numbers_without_n() {
+    int a, soma;
+    char dummy;
+    while (1) {
+        soma = 0;
+        while ((scanf("%d%c", &a, &dummy)) != EOF) {
+            soma += a;
+            if (dummy == '\n') {
+                break;
+            }
+        }
+
+        if (feof(stdin)) {
+            break;
+        }
+
+        cout << soma << endl;
+
+    }
+}
+
 int main()
 {
-    vector<int> v = { 170, 45, 75, 90, 802, 24, 2, 66 };
-    // int n = sizeof(arr) / sizeof(arr[0]);
-
-    // Function Call
-    radix_sort(v);
-    for (int i : v) {
-        cout << i << " ";
-    }
-    cout << endl;
+    variable_numbers_without_n();
     return 0;
 }
