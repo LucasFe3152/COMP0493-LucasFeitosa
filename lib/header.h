@@ -5,8 +5,11 @@
 using namespace std;
 
 template <typename T>
-vector<T> counting_sort(vector<T>& input);
-template <typename T>
 void insertion_sort(vector<T>& input);
+
+void counting_sort(vector<int>& input);
+
 void bucket_sort(float input[], int n);
+void radix_sort(vector<int>& input);
+
 #endif

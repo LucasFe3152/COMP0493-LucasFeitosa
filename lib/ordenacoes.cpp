@@ -1,9 +1,9 @@
 #include "header.h"
 
 template <typename T>
-int get_max(vector<T>& input) {
-    int max = 0;
-    for (int i : input) {
+T get_max(vector<T>& input) {
+    T max = 0;
+    for (const T& i : input) {
         if (i > max)
             max = i;
     }
@@ -23,8 +23,7 @@ void insertion_sort(vector<T>& input) {
     }
 }
 
-template <typename T>
-vector<int> counting_sort(vector<T>& input) {
+void counting_sort(vector<int>& input) {
     int max = get_max(input);
     int size_countarray = max+1;
     int size_input = input.size();
@@ -44,7 +43,8 @@ vector<int> counting_sort(vector<T>& input) {
         countarray[input[i]]--;
     }
 
-    return ordenado;
+    input = ordenado;
+    
 }
 
 void bucket_sort(float input[], int n) {
@@ -68,4 +68,32 @@ void bucket_sort(float input[], int n) {
             current_index++;
         }
     }
+}
+
+void counting_sort_radix(vector<int>& arr, int exp) {
+    int n = arr.size();
+    vector<int> output(n);
+    int i, count[10] = { 0 };
+
+    for (i = 0; i < n; i++)
+        count[(arr[i] / exp) % 10]++;
+
+    for (i = 1; i < 10; i++)
+        count[i] += count[i - 1];
+
+    for (i = n - 1; i >= 0; i--) {
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+
+    for (i = 0; i < n; i++)
+        arr[i] = output[i];
+}
+
+void radix_sort(vector<int>& input) {
+
+    int m = get_max(input);
+
+    for (int exp = 1; m / exp > 0; exp *= 10)
+        counting_sort_radix(input, exp);
 }
