@@ -33,6 +33,8 @@ int binary_search(vector<T>& input, T key);
 string longest_common_prefix(vector<string>& input);
 
 // algoritmo guloso
+float mochila_fracionaria(float capacity, vector<float> values, vector<float> weights);
+
 
 //geometria computacional
 

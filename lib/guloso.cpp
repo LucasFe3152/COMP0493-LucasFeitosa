@@ -11,7 +11,7 @@ bool compare(Item a, Item b) {
     return a.ratio > b.ratio;
 }
 
-float mochila_fracionaria(float capacity, vector<float> values, vector<float> weights) {
+float mochila_fracionaria(float capacity, vector<float>& values, vector<float>& weights) {
     int n = values.size();
     vector<Item> items(n);
     for (int i = 0; i < n; i++) {
@@ -37,4 +37,18 @@ float mochila_fracionaria(float capacity, vector<float> values, vector<float> we
     }
 
     return total_value;
+}
+
+vector<int>& problema_troco(int exchange, vector<int>& coins) {
+    int n = coins.size();
+    vector<int> output(n, 0);
+
+    for (int i = 0; i < n; i++) {
+        while (exchange >= coins[i]) {
+            output[i]++;
+            exchange -= coins[i];
+        }
+    }
+
+    return output;
 }
