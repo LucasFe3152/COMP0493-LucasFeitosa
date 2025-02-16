@@ -2,6 +2,7 @@
 #define HEADER_H
 
 #include <vector>
+#include <string>
 using namespace std;
 
 //input-output halim
@@ -27,5 +28,6 @@ template <typename T>
 int inversion_index(vector<T>& arr);
 template <typename T>
 int binary_search(vector<T>& input, T key);
+string longest_common_prefix(vector<string>& input);
 
 #endif
