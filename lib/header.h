@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <math.h>
+#include <algorithm>
 using namespace std;
 
 //input-output halim
@@ -30,6 +31,8 @@ int inversion_index(vector<T>& arr);
 template <typename T>
 int binary_search(vector<T>& input, T key);
 string longest_common_prefix(vector<string>& input);
+
+// algoritmo guloso
 
 //geometria computacional
 
