@@ -23,5 +23,9 @@ void radix_sort(vector<int>& input);
 int binary_exponentiation(int a, int n);
 template <typename T>
 vector<int> mergesort(vector<T>& input);
+template <typename T>
+int inversion_index(vector<T>& arr);
+template <typename T>
+int binary_search(vector<T>& input, T key);
 
 #endif

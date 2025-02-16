@@ -70,3 +70,70 @@ vector<T> mergesort(vector<T>& input) {
     
     return merge(sub1, sub2);  
 }
+
+template <typename T>
+int count_and_merge(vector<T>& arr, int left, int middle, int right) {
+    int n1 = middle - left + 1, n2 = right - middle;
+    vector<T> a(n1), b(n2);
+    for (int i = 0; i < n1; i++) 
+        a[i] = arr[i+left];
+    for (int i = 0; i < n2; i++) 
+        b[i] = arr[middle + i + 1];
+    
+    int inversions = 0, i = 0, j = 0, current_index = left;
+    while (i < n1 && j < n2) {
+        if (a[i] <= b[j])
+            arr[current_index++] = a[i++];
+        else {
+            arr[current_index++] = b[j++];
+            inversions += (n1-i);
+        }
+    }
+    while (i < n1) {
+        arr[current_index++] = a[i++];
+    }
+
+    while (j < n2) {
+        arr[current_index++] = b[j++];
+    }
+    return inversions;
+}
+
+template <typename T>
+int count_inversions(vector<T>& arr, int left, int right) {
+    int inversions = 0;
+    if (left < right) {
+        int half = (left + right) / 2;
+        inversions += count_inversions(arr, left, half);
+        inversions += count_inversions(arr, half+1, right);
+        inversions += count_and_merge(arr, left, half, right);
+    }
+    return inversions;
+}
+
+template <typename T>
+int inversion_index(vector<T>& arr) {
+    n = arr.size();
+    return count_inversions(arr, 0, n - 1);
+}
+
+template <typename T>
+int binary_search_aux(vector<T>& input, T key, int start, int end) {
+    if (start > end) {
+        return -1;
+    }
+    int middle = start + (end - start) / 2;
+
+    if (input[middle] == key) {
+        return middle;
+    }else if (key > input[middle]) {
+        return binary_search_aux(input, key, middle+1, end);
+    }else {
+        return binary_search_aux(input, key, start, middle-1);
+    }
+}
+
+template <typename T>
+int binary_search(vector<T>& input, T key) {
+    return binary_search_aux(input, key, 0, input.size() - 1);
+}
