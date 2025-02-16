@@ -47,3 +47,14 @@ double distance_between_points2D(Point2D p1, Point2D p2) {
 double distance_between_points3D(Point3D p1, Point3D p2) {
     return sqrt(pow((p1.x - p2.x), 2) + pow((p1.y - p2.y), 2) + pow((p1.z - p2.z), 2));
 }
+
+double distance_to_point(Point2D p, Line l) {
+    // Calcular o coeficiente b da reta: y = mx + b
+    double b = l.p.y - l.m * l.p.x;
+
+    // Calcular a distância usando a fórmula
+    double numerator = abs(l.m * p.x - p.y + b);
+    double denominator = sqrt(l.m * l.m + 1);
+
+    return numerator / denominator;
+}
