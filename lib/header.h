@@ -16,11 +16,10 @@ void variable_number();
 void variable_numbers_without_n();
 
 //ordenacoes lineares
-template <typename T>
-void insertion_sort(vector<T>& input);
 void counting_sort(vector<int>& input);
 void bucket_sort(float input[], int n);
 void radix_sort(vector<int>& input);
+
 
 // dividir para conquistar
 int binary_exponentiation(int a, int n);
@@ -34,6 +33,7 @@ string longest_common_prefix(vector<string>& input);
 
 // algoritmo guloso
 float mochila_fracionaria(float capacity, vector<float> values, vector<float> weights);
+vector<int>& problema_troco(int exchange, vector<int>& coins);
 
 
 //geometria computacional

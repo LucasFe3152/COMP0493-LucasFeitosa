@@ -39,7 +39,8 @@ float mochila_fracionaria(float capacity, vector<float>& values, vector<float>& 
     return total_value;
 }
 
-vector<int>& problema_troco(int exchange, vector<int>& coins) {
+vector<int> &problema_troco(int exchange, vector<int> &coins)
+{
     int n = coins.size();
     vector<int> output(n, 0);
 
