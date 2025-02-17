@@ -1,12 +1,28 @@
 #include "header.h"
 
-template <typename T>
-void dfs(int u, vector<T>& adj, vector<bool>& visited) {
+void dfs(int u, unordered_map<int, vector<int>>& adj, vector<bool>& visited) {
     visited[u] = true;
     //nó atual
     for (auto i : adj[u]) {
-        if (!visited) {
-            dfs(v, adj, visited);
+        if (!visited[i]) {
+            dfs(i, adj, visited);
         }
     }
-}   
+}
+
+void bfs(int u, unordered_map<int, vector<int>>& adj, vector<bool>& visited) {
+    queue<int> q;
+    q.push(u);
+    int v;
+    while (!q.empty()) {
+        v = q.front();
+        q.pop();
+        visited[v] = true;
+        //visitou o nó atual
+        for (auto i : adj[v]) {
+            if (!visited[i]) {
+                q.push(i);
+            }
+        }
+    }
+}
